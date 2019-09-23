@@ -19,8 +19,6 @@ int main()
   int elements;
   int n;
   int opt;
-  //size of stack 1 is 6
-  //size of stack 2 is 4
   i:
   printf ("::::: We can push a total of 10 values :::::\n");
   printf("Operations: 0.Display Stack\n");
@@ -33,24 +31,24 @@ int main()
   scanf("%d",&opt);
   switch(opt)
   {
-  case 0:   display1();
-            display2();
-            break;
-  case 1:   printf("Enter integer in stack1: ");
-            scanf("%d",&n);
-            push1(n);
-            printf ("Value Pushed in Stack 1 : %d\n",n);
-            break;
-  case 2:   printf("Enter integer in stack2: ");
-            scanf("%d",&n);
-            push2(n);
-            printf ("Value Pushed in Stack 2 : %d\n", n);
-            break;
-  case 3:   pop1();
-            break;
-  case 4:   pop2();
-            break;
-  case 9: exit(0);
+      case 0:   display1();
+                display2();
+                break;
+      case 1:   printf("Enter integer in stack1: ");
+                scanf("%d",&n);
+                push1(n);
+                printf ("Value Pushed in Stack 1 : %d\n",n);
+                break;
+      case 2:   printf("Enter integer in stack2: ");
+                scanf("%d",&n);
+                push2(n);
+                printf ("Value Pushed in Stack 2 : %d\n", n);
+                break;
+      case 3:   pop1();
+                break;
+      case 4:   pop2();
+                break;
+      case 9: exit(0);
   }
   goto i;
   return 0;
@@ -58,15 +56,19 @@ int main()
 
 void push1(int data)
 {
-  if(top1 < top2-1)
-    a[++top1] = data;
+  if(top1!=top2-1)
+  {
+      a[++top1] = data;
+  }
   else
     printf ("Stack Overflow !!!\n");
 }
 void push2(int data)
 {
-  if(top1 < top2-1)
-    a[--top2] = data;
+  if(top1!=top2-1)
+  {
+      a[--top2] = data;
+  }
   else
     printf ("Stack Overflow !!!\n");
 }
@@ -91,19 +93,20 @@ void pop2()
   else
     printf ("Stack Underflow on stack2 !!!\n");
 }
-
 void display1()
 {
   int i;
+  printf("Stack 1:  ");
   for(i=0; i<=top1; i++)
-    printf ("%d ", a[i]);
+    printf ("  %d ", a[i]);
   printf ("\n");
 }
 
 void display2 ()
 {
   int i;
+  printf("Stack 2:  ");
   for(i=SIZE-1; i>=top2; i--)
-    printf ("%d ", a[i]);
+    printf ("  %d ", a[i]);
   printf ("\n");
 }
